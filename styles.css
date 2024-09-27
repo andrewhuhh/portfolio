@@ -1,0 +1,116 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    width: 99%; /* yea... idk otherwise there's a scrollbar lmao */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: lowercase;
+}
+
+/* tokens */
+
+:root {
+    /* container sizes */
+    --max-width-container: 1100px;
+    --max-width-container-small: 700px;
+
+    /* container margins */
+    --margin-container: 10px;
+    --section-margins: 50px;
+
+    /* font sizes */
+    --font-size-p: 16px;
+    --font-size-h1: 30px;
+    --font-size-h2: 20px;
+    --font-size-h3: 16px;
+    /* text margins */
+    --p-top: 0px;
+    --p-bottom: 10px;
+    --h-top: 25px;
+    --h-bottom: 10px;
+}
+
+/* fonts */
+
+p {
+    font-size: var(--font-size-p);
+    margin-top: var(--p-top);
+    margin-bottom: var(--p-bottom);
+}
+
+br {
+    display: block;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    margin-top: var(--h-top);
+    margin-bottom: var(--h-bottom);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    margin-top: var(--h-top);
+    margin-bottom: var(--h-bottom);
+}
+
+/* structures */
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--max-width-container);
+    height: 100%;
+    margin: var(--section-margins);
+}
+
+.block { 
+    display: flex;
+    align-items: top;
+    flex-direction: column; /* column default */
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+#row {
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.header-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff42;
+    margin-bottom: 25px;
+}
+
+.content {
+    margin-bottom: 10px;
+}
+
+.heading {
+    margin-bottom: 10px;
+}
+
+/* individual elements */
+
+#info {
+    max-width: 200px;
+}
