@@ -156,6 +156,7 @@ h3 {
 /* individual elements */
 
 #info {
+    width: 30%;
     max-width: 200px;
 }
 
