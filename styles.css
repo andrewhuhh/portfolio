@@ -1,44 +1,60 @@
 body {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--secondary);
+    color: var(--primary);
     font-family: 'Courier New', Courier, monospace;
     display: flex;
-    width: 99%; /* yea... idk otherwise there's a scrollbar lmao */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-transform: lowercase;
+    margin: 0;
 }
 
 /* tokens. this is for you, jordan. thx. */
 
 :root {
+
+    /* colors */
+    --primary: rgb(255, 255, 255);
+    --secondary: rgb(0, 0, 0);
+    --primary-faded: rgba(255, 255, 255, 0.4);
+
     /* container sizes */
-    --max-width-container: 1100px;
-    --max-width-container-small: 700px;
+    --max-container-width: 1100px;
+    --max-small-container-width: 700px;
 
     /* container margins */
     --margin-container: 10px;
     --section-margins: 50px;
 
     /* font sizes */
-    --font-size-p: 16px;
-    --font-size-h1: 30px;
-    --font-size-h2: 20px;
-    --font-size-h3: 16px;
+    --p: 16px;
+    --h1: 30px;
+    --h2: 20px;
+    --h3: 16px;
+    --header-bar: 14px;
+
     /* text margins */
-    --p-top: 0px;
+    --p-top: 10px;
     --p-bottom: 10px;
-    --h-top: 25px;
+    --h-top: 10px;
     --h-bottom: 10px;
 }
 
 /* fonts */
 
 p {
-    font-size: var(--font-size-p);
+    font-size: var(--p);
     margin-top: var(--p-top);
     margin-bottom: var(--p-bottom);
+    opacity: 0.8;
+}
+
+p.small { /* header bar text */
+    font-size: var(--header-bar);
+    margin-top: var(--p-top);
+    margin-bottom: var(--p-bottom);
+    opacity: 0.5;
 }
 
 br {
@@ -46,18 +62,34 @@ br {
 }
 
 h1 {
-    font-size: var(--font-size-h1);
+    font-size: var(--h1);
     margin-top: var(--h-top);
     margin-bottom: var(--h-bottom);
 }
 
 h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--h3);
     margin-top: var(--h-top);
     margin-bottom: var(--h-bottom);
 }
 
 /* structures */
+
+.thumbnail {
+    width: 100%;
+    height: 40vw;
+    max-height: 300px;
+    min-height: 400px;
+    display: flex;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .section {
     display: flex;
@@ -65,7 +97,7 @@ h3 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: var(--max-width-container);
+    max-width: var(--max-container-width);
     height: 100%;
     margin: var(--section-margins);
 }
@@ -97,7 +129,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ffffff42;
+    border-bottom: 1px solid var(--primary-faded);
     margin-bottom: 25px;
 }
 
