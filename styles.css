@@ -1,7 +1,7 @@
 body {
     background-color: var(--secondary);
     color: var(--primary);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Hanken Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@ body {
     width: 100%;
     letter-spacing: -0.25px;
     font-size: 14px;
-    line-height: 1.32;
+    line-height: 1.6;
     /* overflow-x: hidden; */
 }
 
@@ -54,7 +54,7 @@ p {
     font-size: var(--p);
     margin-top: var(--p-top);
     margin-bottom: var(--p-bottom);
-    opacity: 0.8;
+    font-weight: 300;
 }
 
 p.small { /* header bar text */
@@ -86,13 +86,16 @@ h3 {
     width: 100%;
     height: 30vw;
     max-height: 340px;
-    min-height: 200px;
+    min-height: 230px;
+    max-width: 60vw;
+    min-width: var(--max-container-width);
     display: flex;
     overflow: hidden;
 }
 
 .thumbnail img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
 }
