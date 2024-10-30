@@ -139,7 +139,7 @@ h3 {
     padding: var(--outer-padding);
     padding-top: var(--vertical-padding);
     padding-bottom: var(--vertical-padding);
-    gap: var(--gaps);
+    gap: var(--inner-gaps);
 }
 
 .header-bar {
@@ -147,6 +147,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     width: 100%;
+    margin-bottom: 5px;
 }
 
 .header-bar-line {
@@ -186,6 +187,7 @@ h3 {
     padding: var(--outer-padding);
     background-color: var(--white-overlay);
     width: 238px;
+    line-height: 1;
 }
 
 .content-container {
@@ -203,6 +205,16 @@ h3 {
     flex-direction: row;
     margin: 0;
     gap: var(--gaps);
+}
+
+.content.right {
+    justify-content: right!important;
+    text-align: right!important;
+}
+
+.content.left {
+    justify-content: left!important;
+    text-align: left!important;
 }
 
 .content b {
@@ -231,6 +243,7 @@ h3 {
     flex-direction: column;
     gap: 2px;
     text-align: right;
+    line-height: 1.5;
 }
 
 .row {
@@ -274,15 +287,6 @@ h3 {
     height: 344px;
 }
 
-.frame-container .text-frame {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--inner-padding);
-    max-width: 35%;
-    gap: 5px;
-}
-
 .left-aligned {
     justify-content: left!important;
 }
@@ -291,18 +295,48 @@ h3 {
     justify-content: right!important;
 }
 
+.split-aligned {
+    justify-content: space-between!important;
+}
+
+.frame-container .text-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--inner-padding);
+    max-width: 35%;
+    gap: 5px;
+    z-index: 1;
+}
+
 .text-frame.small {
     max-width: 32%;
+}
+
+.text-frame.tiny {
+    max-width: 22%;
 }
 
 .frame-container .img-frame {
     position: absolute;
     user-select: none;
     pointer-events: none;
+    z-index: 0;
 }
 
 .img-frame img {
     width: 100%;
+}
+
+.frame-disclaimer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    font-size: var(--header-bar);
+    font-weight: var(--regular);
+    opacity: 0.2;
+    font-style: italic;
 }
 
 /* individual elements */
