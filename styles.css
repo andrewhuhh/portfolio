@@ -1,7 +1,7 @@
 body {
     background-color: var(--dark);
     color: var(--white);
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: var(--font-default);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    letter-spacing: -0.25px;
+    letter-spacing: -0.015em;
     font-size: var(--p);
     line-height: var(--line-height);
     margin-top: 40px;
@@ -21,10 +21,13 @@ body {
 /* tokens. this is for you, jordan. thx. */
 :root {
 
+    /* fonts */
+    --font-default: 'Inter', sans-serif;
+
     /* colors */
     --white: rgb(255, 255, 255);
     --white-overlay: rgba(255, 255, 255, 0.01);
-    --text-white: rgba(255, 255, 255, 0.7);
+    --text-white: rgba(255, 255, 255, 0.8);
 
     --outer-border: rgba(255, 255, 255, 0.2);
     --inner-border: rgba(255, 255, 255, 0.1);
@@ -35,21 +38,25 @@ body {
     --green: #00FF00;
 
     /* object sizes */
-    --max-container-width: 850px;
+    --max-section-width: 810px;
 
     /* object spacing */
-    --margins: 20px;
+    --outer-padding: 20px;
+    --inner-padding: 24px;
+    --vertical-padding: 40px;
+    --gaps: 20px;
+    --inner-gaps: 15px;
 
     /* font sizes */
-    --p: 1em;
-    --h1: 2em;
-    --h2: 1.5em;
-    --header-bar: 1em;
-    --line-height: 1.4;
+    --p: 15px;
+    --h1: 30px;
+    --h2: 20px;
+    --header-bar: 12px;
+    --line-height: 1.5;
 
     /* font weights */
-    --regular: 300;
-    --medium: 500;
+    --regular: 350;
+    --medium: 400;
     --bold: 800;
 
     /* opacity */
@@ -70,6 +77,7 @@ p {
 p.small { /* header bar text */
     font-size: var(--header-bar);
     margin: 0;
+    line-height: 1;
 }
 
 .bold {
@@ -92,14 +100,17 @@ h1 {
 
 h2 {
     font-size: var(--h2);
+    font-weight: var(--medium);
     margin: 0;
     opacity: var(--bold-opacity);
+    color: var(--orange);
+    letter-spacing: -0.03em;
 }
 
 h3 {
     font-size: var(--p);
-    font-weight: var(--medium);
-    line-height: var(--line-height);
+    font-weight: var(--bold);
+    line-height: 1.3;
     opacity: var(--bold-opacity);
     margin: 0;
 }
@@ -107,16 +118,7 @@ h3 {
 /* structures */
 
 #thumbnail {
-    /* width: 100%;
-    height: 30vw;
-    max-height: 340px;
-    min-height: 230px;
-    max-width: var(--max-container-width);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px; */
-    border-radius: 10px;
+    border-radius: 20px;
     max-height: 340px;
     overflow: hidden;
     display: flex;
@@ -130,58 +132,83 @@ h3 {
 
 .section {
     display: flex;
-    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: var(--section-margins);
-    padding-bottom: var(--section-margins);
-    gap: 20px;
-    max-width: var(--max-container-width);
-}
-
-.block { 
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--outer-border);
-    min-width: 100%;
-    border-radius: 25px;
-    padding: var(--margins);
-    gap: var(--margins);
-}
-
-.flexbox {
-    display: flex;
-    gap: var(--margins);
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    border: 1px solid var(--inner-border);
-    border-radius: 20px;
-    padding: var(--margins);
-    /* padding-bottom: 40px;
-    padding-top: 40px; */
-    gap: var(--margins);
-    overflow: hidden;
-    background-color: var(--black);
+    width: var(--max-section-width);
+    padding: var(--outer-padding);
+    padding-top: var(--vertical-padding);
+    padding-bottom: var(--vertical-padding);
+    gap: var(--gaps);
 }
 
 .header-bar {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
+}
+
+.header-bar-line {
+    border: 1px solid var(--inner-border);
+    flex-grow: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    gap: var(--vertical-padding);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--inner-border);
+    border-radius: 20px;
+    padding: var(--inner-padding);
+    padding-bottom: var(--vertical-padding);
+    padding-top: var(--vertical-padding);
+    gap: var(--inner-gaps);
+    overflow: hidden;
+    background-color: var(--black);
+    max-width: 810px;
+}
+
+.container.small {
+    border-radius: 10px;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: start;
+    padding: var(--outer-padding);
+    background-color: var(--white-overlay);
+    width: 238px;
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    gap: var(--inner-gaps);
+    overflow: hidden;
 }
 
 .content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0;
-    gap: var(--margins);
+    gap: var(--gaps);
+}
+
+.content b {
+    font-weight: var(--bold);
+    opacity: var(--bold-opacity);
+    color: var(--orange);
 }
 
 .heading {
@@ -189,6 +216,7 @@ h3 {
     flex-direction: column;
     margin-bottom: 5px;
     gap: 0px;
+    line-height: 1.2;
 }
 
 .heading p {
@@ -202,86 +230,87 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    text-align: right;
 }
 
-.list .label{
-    font-weight: 500;
-    margin-top: 10px;
-    opacity: 1;
-    font-weight: 500;
+.row {
+    flex-direction: row!important;
 }
 
-.list .item {
-    display: flex;
-    flex-direction: column;
-    opacity: 0.7;
-    font-weight: 300;
+.centered {
+    align-items: center!important;
+    justify-content: center!important;
 }
 
-.list .break {
-    border-bottom: 1px solid var(--outer-border);
-    margin-top: 10px;
+.column {
+    flex-direction: column!important;
 }
 
-#row {
-    flex-direction: row;
+.horizontal {
+    flex-direction: row!important;
+    gap: 20px;
 }
 
-#centered {
-    align-items: center;
-    justify-content: center;
-}
-
-#column {
-    flex-direction: column;
-}
-
-#horizontal {
-    flex-direction: row;
+.vertical {
+    flex-direction: column!important;
     gap: 20px;
 }
 
 /* frames */
-#left-aligned {
-    flex-direction: row;
-}
-
-#right-aligned {
-    flex-direction: row-reverse;
-}
-
 .frame-container {
     position: relative;
     display: flex;
-    height: 300px;
+
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    border: 1px solid var(--inner-border);
+    border-radius: 20px;
+
+    overflow: hidden;
+    background-color: var(--black);
+
+    width: 100%;
+    height: 344px;
 }
 
 .frame-container .text-frame {
     display: flex;
     flex-direction: column;
-    width: 35%;
-    justify-content: center;;
-    gap: 15px;
+    justify-content: center;
+    padding: var(--inner-padding);
+    max-width: 35%;
+    gap: 5px;
+}
+
+.left-aligned {
+    justify-content: left!important;
+}
+
+.right-aligned {
+    justify-content: right!important;
+}
+
+.text-frame.small {
+    max-width: 32%;
 }
 
 .frame-container .img-frame {
     position: absolute;
-    top: -40px;
-    left: -40px;
+    user-select: none;
+    pointer-events: none;
 }
 
 .img-frame img {
-    width: 110%;
+    width: 100%;
 }
 
 /* individual elements */
-#info {
-    width: 25%;
-    max-width: 250px;
-}
 
-#project {
-    width: 75%;
+#info {
+    max-width: 280px;
+    gap: 10px;
+    align-items: end;
 }
 
 #light {
@@ -294,7 +323,7 @@ h3 {
     color: var(--primary);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 860px) {
     body {
         display: flex;
         align-items: center;
